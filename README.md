@@ -17,25 +17,27 @@ The simplest way to embed a stylesheet is to put it under `/src/main/resources`,
 
 The following example shows `/src/main/resources/custom.xsl` used as the XSLT stylesheet, as well as `my-param` stylesheet parameter initialized with the value of `MY_PARAM` environment variable.
 
-    package custom;
+```java
+package custom;
 
-    import com.atomgraph.etl.aws.kinesis.transform.XSLTTransform;
-    import java.util.Collections;
-    import javax.xml.transform.stream.StreamSource;
-    import net.sf.saxon.s9api.QName;
-    import net.sf.saxon.s9api.SaxonApiException;
-    import net.sf.saxon.s9api.XdmAtomicValue;
+import com.atomgraph.etl.aws.kinesis.transform.XSLTTransform;
+import java.util.Collections;
+import javax.xml.transform.stream.StreamSource;
+import net.sf.saxon.s9api.QName;
+import net.sf.saxon.s9api.SaxonApiException;
+import net.sf.saxon.s9api.XdmAtomicValue;
 
-    public class CustomXSLTTransform extends XSLTTransform
+public class CustomXSLTTransform extends XSLTTransform
+{
+    
+    public CustomXSLTTransform() throws SaxonApiException
     {
-        
-        public CustomXSLTTransform() throws SaxonApiException
-        {
-            super(new StreamSource(CustomXSLTTransform.class.getResourceAsStream("/custom.xsl")),
-                Collections.singletonMap(new QName("my-param"), new XdmAtomicValue(System.getenv("MY_PARAM"))));
-        }
-
+        super(new StreamSource(CustomXSLTTransform.class.getResourceAsStream("/custom.xsl")),
+            Collections.singletonMap(new QName("my-param"), new XdmAtomicValue(System.getenv("MY_PARAM"))));
     }
+
+}
+```
 
 The function handler would be `custom.CustomXSLTTransform::transformRecords` in this case.
 
