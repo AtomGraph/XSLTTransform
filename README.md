@@ -19,6 +19,13 @@ The following example shows `/src/main/resources/custom.xsl` used as the XSLT st
 
     package custom;
 
+    import com.atomgraph.etl.aws.kinesis.transform.XSLTTransform;
+    import java.util.Collections;
+    import javax.xml.transform.stream.StreamSource;
+    import net.sf.saxon.s9api.QName;
+    import net.sf.saxon.s9api.SaxonApiException;
+    import net.sf.saxon.s9api.XdmAtomicValue;
+
     public class CustomXSLTTransform extends XSLTTransform
     {
         
