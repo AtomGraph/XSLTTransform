@@ -22,7 +22,7 @@ The following example shows `/src/main/resources/custom.xsl` used as the XSLT st
     public class CustomXSLTTransform extends XSLTTransform
     {
         
-        public CustomXSLTTransform(String path, URI base) throws SaxonApiException
+        public CustomXSLTTransform() throws SaxonApiException
         {
             super(new StreamSource(CustomXSLTTransform.class.getResourceAsStream("/custom.xsl")), Collections.singletonMap(new QName("my-param"), new XdmAtomicValue(System.getenv("MY_PARAM"))));
         }
