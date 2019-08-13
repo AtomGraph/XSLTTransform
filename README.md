@@ -9,7 +9,7 @@ Passing a map of stylesheet parameters is supported. Environment variables can b
 
 ## Usage
 
-The XSLT stylesheet is user-defined and has to be supplied to the function. It can be done by extending the `XSLTTransform` base class and overriding its constructor with stylesheet and parameter map as arguments.
+The XSLT stylesheet is user-defined and has to be supplied to the function. It can be done by extending the [`XSLTTransform`](src/main/java/com/atomgraph/etl/aws/kinesis/transform/XSLTTransform.java) base class and overriding its constructor with stylesheet and parameter map as arguments.
 
 The simplest way to embed a stylesheet is to put it under `/src/main/resources`, from where it can be read using `getResourceAsStream()`. That way the stylesheet is built into the function JAR itself. Alternatively, it should be possible to load it from S3.
 
@@ -33,4 +33,4 @@ The function handler would be `custom.CustomXSLTTransform::transformRecords` in 
 
 ## Build
 
-Package the function for upload to AWS Lambda by running `mvn package`.
+Package the extended function for upload to AWS Lambda by running `mvn package`.
