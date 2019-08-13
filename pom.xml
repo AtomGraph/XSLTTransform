@@ -6,6 +6,38 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+    <name>XSLTTransform</name>
+    <description>XSLT transformation Lambda function for AWS Kinesis Firehose records</description>
+    <url>https://github.com/AtomGraph/XSLTTransform</url>
+    <inceptionYear>2019</inceptionYear>
+    
+    <developers>
+        <developer>
+            <id>namedgraph</id>
+            <email>martynas@atomgraph.com</email>
+            <roles>
+                <role>Developer</role>
+                <role>Founder</role>
+            </roles>
+            <organization>AtomGraph</organization>
+            <organizationUrl>https://atomgraph.com</organizationUrl>
+        </developer>
+    </developers>
+    
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    
+    <scm>
+        <url>https://github.com/AtomGraph/XSLTTransform</url>
+        <connection>scm:git:git://github.com/AtomGraph/XSLTTransform.git</connection>
+        <developerConnection>scm:git:git@github.com:AtomGraph/XSLTTransform.git</developerConnection>
+    </scm>
+    
     <dependencies>
         <dependency>
             <groupId>com.amazonaws</groupId>
