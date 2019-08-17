@@ -45,7 +45,7 @@ The function handler would be `custom.CustomXSLTTransform::transformRecords` in 
 
 ## Build
 
-Create a new Java project and include XSLTTransform as dependency:
+Create a new Java project and include XSLTTransform as dependency in `pom.xml`:
 
 ```xml
 <dependency>
@@ -55,6 +55,6 @@ Create a new Java project and include XSLTTransform as dependency:
 </dependency>
 ```
 
-You might also need add `maven-shade-plugin`, as per [Creating a .jar Deployment Package Using Maven without any IDE (Java)](https://docs.aws.amazon.com/lambda/latest/dg/java-create-jar-pkg-maven-no-ide.html#java-create-jar-pkg-maven-no-ide-create-project).
+You might also need to add the `maven-shade-plugin` in the `<build>` section, as per [Creating a .jar Deployment Package Using Maven without any IDE (Java)](https://docs.aws.amazon.com/lambda/latest/dg/java-create-jar-pkg-maven-no-ide.html#java-create-jar-pkg-maven-no-ide-create-project).
 
 Package the extended function for upload to AWS Lambda by running `mvn package`.
