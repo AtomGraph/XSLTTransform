@@ -55,6 +55,6 @@ Create a new Java project and include XSLTTransform as dependency:
 </dependency>
 ```
 
-You might also need add `maven-shade-plugin`, as per [Creating a .jar Deployment Package Using Maven without any IDE (Java)](https://docs.aws.amazon.com/lambda/latest/dg/java-create-jar-pkg-maven-no-ide.html).
+You might also need add `maven-shade-plugin`, as per [Creating a .jar Deployment Package Using Maven without any IDE (Java)](https://docs.aws.amazon.com/lambda/latest/dg/java-create-jar-pkg-maven-no-ide.html#java-create-jar-pkg-maven-no-ide-create-project).
 
 Package the extended function for upload to AWS Lambda by running `mvn package`.
