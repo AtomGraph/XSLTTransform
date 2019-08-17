@@ -13,6 +13,8 @@ The XSLT stylesheet is user-defined and has to be supplied to the function. It c
 
 The simplest way to embed a stylesheet is to put it under `/src/main/resources`, from where it can be read using `getResourceAsStream()`. That way the stylesheet is built into the function JAR itself. Alternatively, it should be possible to load it from S3.
 
+In AWS Lambda configuration, specify `transformRecords` method (which is inherited by your subclass) as the function handler.
+
 ## Example
 
 The following example shows `/src/main/resources/custom.xsl` used as the XSLT stylesheet, as well as `my-param` stylesheet parameter initialized with the value of `MY_PARAM` environment variable.
