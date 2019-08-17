@@ -3,7 +3,7 @@
 XSLTTransform is a generic [AWS Lambda function](https://aws.amazon.com/lambda/) designed specifically for [Kinesis Data Firehose Data Transformation](https://docs.aws.amazon.com/firehose/latest/dev/data-transformation.html).
 
 XSLTTransform uses Saxon-HE 9.9 processor to perform an XSLT 3.0 transformation of input records to output records. XSLT 1.0 and 2.0 stylesheets should be backwards-compatible.
-Naturally, the input records have to be XML.
+Naturally, the input records have to be XML. JSON can work too, if you use a 3.0 stylesheet and its [JSON processing](https://www.w3.org/TR/xslt-30/#json) features.
 
 Passing a map of stylesheet parameters is supported. Environment variables can be retrieved using `System.getenv()` and forwarded as stylesheet parameters.
 

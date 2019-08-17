@@ -62,33 +62,35 @@ public class XSLTTransform
     
     public KinesisAnalyticsInputPreprocessingResponse transformRecords(KinesisFirehoseEvent event, Context context) throws SaxonApiException
     {
-        List<Record> transformed = event.getRecords().stream().map(inputRecord -> {
-            StreamSource input = new StreamSource(new ByteArrayInputStream(inputRecord.getData().array()));
-            
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            Serializer output = getProcessor().newSerializer(baos);
-            
-            Record record = new Record();
-            record.setRecordId(inputRecord.getRecordId());
-            try
-            {
-                getTransformer().transform(input, output);
-
-                record.setData(ByteBuffer.wrap(baos.toByteArray()));
-                record.setResult(KinesisAnalyticsInputPreprocessingResponse.Result.Ok);
-                return record;
-            }
-            catch (SaxonApiException ex)
-            {
-                log(ex);
-                record.setResult(KinesisAnalyticsInputPreprocessingResponse.Result.ProcessingFailed);
-                return record;
-            }
-        }).collect(Collectors.toList());
-        
+        List<Record> transformed = event.getRecords().stream().map(this::transformRecord).collect(Collectors.toList());
         KinesisAnalyticsInputPreprocessingResponse response = new KinesisAnalyticsInputPreprocessingResponse();
         response.setRecords(transformed);
         return response;
+    }
+    
+    public KinesisAnalyticsInputPreprocessingResponse.Record transformRecord(KinesisFirehoseEvent.Record inputRecord)
+    {
+        StreamSource input = new StreamSource(new ByteArrayInputStream(inputRecord.getData().array()));
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        Serializer output = getProcessor().newSerializer(baos);
+
+        Record record = new Record();
+        record.setRecordId(inputRecord.getRecordId());
+        try
+        {
+            getTransformer().transform(input, output);
+
+            record.setData(ByteBuffer.wrap(baos.toByteArray()));
+            record.setResult(KinesisAnalyticsInputPreprocessingResponse.Result.Ok);
+            return record;
+        }
+        catch (SaxonApiException ex)
+        {
+            log(ex);
+            record.setResult(KinesisAnalyticsInputPreprocessingResponse.Result.ProcessingFailed);
+            return record;
+        }
     }
     
     public void log(Exception ex)
