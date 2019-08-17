@@ -45,4 +45,16 @@ The function handler would be `custom.CustomXSLTTransform::transformRecords` in 
 
 ## Build
 
+Create a new Java project and include XSLTTransform as dependency:
+
+```xml
+<dependency>
+    <groupId>com.atomgraph.etl.aws.kinesis</groupId>
+    <artifactId>XSLTTransform</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+</dependency>
+```
+
+You might also need add `maven-shade-plugin`, as per [Creating a .jar Deployment Package Using Maven without any IDE (Java)](https://docs.aws.amazon.com/lambda/latest/dg/java-create-jar-pkg-maven-no-ide.html).
+
 Package the extended function for upload to AWS Lambda by running `mvn package`.
