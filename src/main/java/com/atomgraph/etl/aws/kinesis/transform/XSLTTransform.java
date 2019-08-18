@@ -60,7 +60,7 @@ public class XSLTTransform
         this.transformer.setStylesheetParameters(params);
     }
     
-    public KinesisAnalyticsInputPreprocessingResponse transformRecords(KinesisFirehoseEvent event, Context context) throws SaxonApiException
+    public KinesisAnalyticsInputPreprocessingResponse transformRecords(KinesisFirehoseEvent event, Context context)
     {
         List<Record> transformed = event.getRecords().stream().map(this::transformRecord).collect(Collectors.toList());
         KinesisAnalyticsInputPreprocessingResponse response = new KinesisAnalyticsInputPreprocessingResponse();
