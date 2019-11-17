@@ -38,7 +38,7 @@ import net.sf.saxon.s9api.XsltExecutable;
  * AWS Lambda function that transforms Kinesis Firehose records using XSLT 3.0 processor.
  * You need to extend this base class and to supply the stylesheet and its parameters to the subclass constructor.
  * 
- * @author Martynas Jusevičius <martynas@atomgraph.com>
+ * @author Martynas Jusevičius {@literal <martynas@atomgraph.com>}
  */
 public class XSLTTransform
 {
