@@ -62,13 +62,13 @@ public class XSLTTransform
     
     public KinesisAnalyticsInputPreprocessingResponse transformRecords(KinesisFirehoseEvent event, Context context)
     {
-        List<Record> transformed = event.getRecords().stream().map(this::transformRecord).collect(Collectors.toList());
+        List<Record> transformed = event.getRecords().stream().map(record -> transformRecord(record, context)).collect(Collectors.toList());
         KinesisAnalyticsInputPreprocessingResponse response = new KinesisAnalyticsInputPreprocessingResponse();
         response.setRecords(transformed);
         return response;
     }
     
-    public KinesisAnalyticsInputPreprocessingResponse.Record transformRecord(KinesisFirehoseEvent.Record inputRecord)
+    public KinesisAnalyticsInputPreprocessingResponse.Record transformRecord(KinesisFirehoseEvent.Record inputRecord, Context context)
     {
         StreamSource input = new StreamSource(new ByteArrayInputStream(inputRecord.getData().array()));
 
@@ -87,15 +87,10 @@ public class XSLTTransform
         }
         catch (SaxonApiException ex)
         {
-            log(ex);
+            context.getLogger().log(ex.toString());
             record.setResult(KinesisAnalyticsInputPreprocessingResponse.Result.ProcessingFailed);
             return record;
         }
-    }
-    
-    public void log(Exception ex)
-    {
-        ex.printStackTrace();
     }
     
     public Processor getProcessor()
