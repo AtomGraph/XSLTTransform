@@ -44,6 +44,29 @@
         <developerConnection>scm:git:git@github.com:AtomGraph/XSLTTransform.git</developerConnection>
     </scm>
     
+    <repositories>
+        <repository>
+            <id>apache-repo-releases</id>
+            <url>https://repository.apache.org/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>apache-repo-snapshots</id>
+            <url>https://repository.apache.org/content/repositories/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    
     <dependencies>
         <dependency>
             <groupId>com.amazonaws</groupId>
