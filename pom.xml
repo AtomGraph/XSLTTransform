@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.atomgraph.etl.aws.kinesis</groupId>
     <artifactId>xslt-transform</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
 
     <name>XSLTTransform</name>
@@ -42,7 +42,7 @@
         <url>https://github.com/AtomGraph/XSLTTransform</url>
         <connection>scm:git:git://github.com/AtomGraph/XSLTTransform.git</connection>
         <developerConnection>scm:git:git@github.com:AtomGraph/XSLTTransform.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>xslt-transform-1.0.2</tag>
   </scm>
     
     <repositories>
